@@ -22,11 +22,11 @@ public class Operations {
                 num1 = Integer.parseInt(valueFirst);
                 num2 = Integer.parseInt(valueSecond);
             } catch (Exception e) {
-                throw e = new Exception("т.к. число больше 10");
+                throw e = new Exception("Ошибка : т.к. число больше 10");
             }
         }
         if (num1 > 10 || num2 > 10) {
-            throw new Exception("т.к. число больше 10");
+            throw new Exception("Ошибка : т.к. число больше 10");
         }
 
         switch (valueAction) {
@@ -55,7 +55,7 @@ public class Operations {
 
     public String result(int number, boolean isRoman) throws Exception {
         if (number <= 0 && isRoman) {
-            throw new Exception("т.к. в римской системе нет отрицательных чисел");
+            throw new Exception("Ошибка : т.к. в римской системе нет отрицательных чисел");
         }
         if (isRoman) {
             return convertNumToRoman1(number);

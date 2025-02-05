@@ -12,7 +12,7 @@ public class Parser {
         input = input.replaceAll(" ", "");
 
         if (input.length() - input.replaceAll("[+\\-*/]", "").length() > 1) {
-            throw new Exception("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+            throw new Exception("Ошибка : т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
         }
 
         int indexAction = -1;
@@ -23,9 +23,8 @@ public class Parser {
             }
         }
         if (indexAction < 1) {
-            throw new Exception("throws Exception //т.к. строка не является математической операцией");
+            throw new Exception("throws Exception //Ошибка : т.к. строка не является математической операцией");
         }
-
 
         String valueFirst = input.substring(0, indexAction);
         String valueSecond = input.substring(indexAction + 1);
@@ -35,13 +34,27 @@ public class Parser {
         parseInput.add(valueAction);
         parseInput.add(valueSecond);
 
-        if (ROMAN.containsKey(valueFirst) && Character.isDigit(valueSecond.charAt(0))) {
-            throw new Exception("т.к. используются одновременно разные системы счисления");
-        } else if (Character.isDigit(valueFirst.charAt(0)) && ROMAN.containsKey(valueSecond)) {
-            throw new Exception("т.к. используются одновременно разные системы счисления");
+
+        if (!checkSystem(valueFirst, valueSecond)) {
+            throw new Exception("Ошибка : т.к. используются одновременно разные системы счисления");
         }
 
         return parseInput;
+    }
+    public boolean checkSystem (String valueFirst, String valueSeccond) {
+        if (ROMAN.containsKey(valueFirst) && ROMAN.containsKey(valueSeccond)) {
+            return true;
+        }
+        try {
+            int valueFirstNum = Integer.parseInt(valueFirst);
+            int valueSecondNum = Integer.parseInt(valueSeccond);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+
+
     }
 
 }
