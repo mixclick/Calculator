@@ -46,7 +46,7 @@ public class Operations {
         return result;
     }
 
-    public boolean isRoman(List<String> values) throws Exception {
+    public boolean isRoman(List<String> values)  {
         String valueFirst;
         valueFirst = values.get(0);
         return (ROMAN.containsKey(valueFirst));
