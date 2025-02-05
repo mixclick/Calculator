@@ -46,8 +46,8 @@ public class Parser {
             return true;
         }
         try {
-            int valueFirstNum = Integer.parseInt(valueFirst);
-            int valueSecondNum = Integer.parseInt(valueSeccond);
+            Integer.parseInt(valueFirst);
+            Integer.parseInt(valueSeccond);
             return true;
         } catch (Exception e) {
             return false;
